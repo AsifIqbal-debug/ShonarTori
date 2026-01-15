@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
+import CartPage from '../views/CartPage.vue'
+import CheckoutPage from '../views/CheckoutPage.vue'
+import OrderConfirmationPage from '../views/OrderConfirmationPage.vue'
+import MyOrdersPage from '../views/MyOrdersPage.vue'
 import TrackOrderPage from '../views/TrackOrderPage.vue'
 import ShippingInfoPage from '../views/ShippingInfoPage.vue'
 import ReturnPolicyPage from '../views/ReturnPolicyPage.vue'
@@ -11,6 +15,26 @@ const routes = [
     path: '/',
     name: 'Home',
     component: HomePage
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: CartPage
+  },
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: CheckoutPage
+  },
+  {
+    path: '/order-confirmation/:orderId',
+    name: 'OrderConfirmation',
+    component: OrderConfirmationPage
+  },
+  {
+    path: '/my-orders',
+    name: 'MyOrders',
+    component: MyOrdersPage
   },
   {
     path: '/track-order',

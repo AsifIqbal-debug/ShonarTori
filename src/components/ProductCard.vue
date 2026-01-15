@@ -7,7 +7,7 @@
     <div class="product-info">
       <p class="product-category">{{ product.type }}</p>
       <h3 class="product-name">{{ product.name[languageStore.currentLanguage] }}</h3>
-      <p class="product-price">${{ product.price }}</p>
+      <p class="product-price">৳{{ product.price.toLocaleString() }}</p>
       <div class="product-actions">
         <button class="add-to-cart-btn" @click="handleAddToCart">
           <i class="fas fa-shopping-cart"></i> {{ t('Add to Cart', 'কার্টে যোগ করুন') }}

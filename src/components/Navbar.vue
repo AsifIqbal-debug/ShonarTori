@@ -18,6 +18,7 @@
               <i class="fas fa-chevron-down dropdown-icon"></i>
             </a>
             <ul class="dropdown-menu" :class="{ show: dropdownOpen }">
+              <li><router-link to="/my-orders" @click="closeMenu">{{ t('My Orders', 'আমার অর্ডার') }}</router-link></li>
               <li><router-link to="/track-order" @click="closeMenu">{{ t('Track Order', 'অর্ডার ট্র্যাক') }}</router-link></li>
               <li><router-link to="/shipping-info" @click="closeMenu">{{ t('Shipping Info', 'শিপিং তথ্য') }}</router-link></li>
               <li><router-link to="/return-policy" @click="closeMenu">{{ t('Return Policy', 'রিটার্ন নীতি') }}</router-link></li>
@@ -29,12 +30,16 @@
         </ul>
         
         <div class="nav-actions">
-          <button class="search-btn" @click="$emit('open-search')">
+          <button class="search-btn" @click="$emit('open-search')" :title="t('Search', 'অনুসন্ধান')">
             <i class="fas fa-search"></i>
           </button>
-          <button class="cart-btn" @click="$emit('open-cart')">
+          <button class="cart-btn" @click="$emit('open-cart')" :title="t('Cart', 'কার্ট')">
             <i class="fas fa-shopping-cart"></i>
             <span class="cart-count" v-if="cartStore.totalItems > 0">{{ cartStore.totalItems }}</span>
+          </button>
+          <button class="lang-btn" @click="languageStore.toggleLanguage()" :title="languageStore.isEnglish ? 'বাংলা' : 'English'">
+            <i class="fas fa-language"></i>
+            <span>{{ languageStore.isEnglish ? 'বাংলা' : 'EN' }}</span>
           </button>
           <button class="menu-toggle" @click="toggleMenu">
             <i :class="menuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
@@ -201,6 +206,31 @@ onUnmounted(() => {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.lang-btn {
+  background: var(--primary-gold);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+  border: none;
+  cursor: pointer;
+}
+
+.lang-btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+.lang-btn i {
+  font-size: 16px;
 }
 
 /* Dropdown Menu Styles */
